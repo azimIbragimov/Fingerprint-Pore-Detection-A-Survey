@@ -1,0 +1,1 @@
+python3 out_of_the_box_detect.py --groundTruthFolder dataset --testingRange $1
