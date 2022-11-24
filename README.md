@@ -7,13 +7,13 @@ Also, this repository contains unofficial re-implementations of methods describe
 Additionally, this repository contains out-of-the-box code that allows people to detect pores with pre-trained models. 
 
 ## Outline
-* Requirements 
-* Installation of dataset  
-* Experiment set up 
-* Experiment result replication 
-* Detecting pores in arbitrary input images
-* Research framework 
-* Reimplementations
+* [Requirements](#requirements)
+* [Installation of dataset](#installation-of-dataset)
+* [Experiment set up](#experiment-set-up)
+* [Experiment result replication](#experiment-result-replication)
+* [Detecting pores in arbitrary input images](#experiment-result-replication)
+* [Research framework](#research-framework)
+* [Re-implementations](#re-implementations)
 
 ## Requirements 
 The code in this repository was tested for Ubuntu 20.04.3 and Python 3.8.10. Running experiments on this version will give results that are closest to what was reported in the research paper. 
@@ -33,14 +33,14 @@ The Hong Kong Polytechnic University High-Resolution-Fingerprint (PolyU HREF) is
 
 The L3 Synthetic Fingerprint (L3-SF) dataset is a **public** database of L3 synthetic fingerprint images for fingerprint recognition. This dataset contains fingerprint pore annotations for 740 images. 
 
-To install the PolyU dataset, place a folder with the dataset inside of this repository. Then follow run the following command: 
+To install the <ins>PolyU dataset</ins>, place a folder with the dataset inside of this repository. Then follow run the following command: 
 
 ```
 chmod +x scripts/initializePolyU.sh
 ./scripts/initializePolyU.sh pathToDataset
 ```
 
-To install the L3-SF dataset, place a folder with the dataset inside of this repository. Then follow run the following command: 
+To install the <ins>L3-SF dataset</ins>, place a folder with the dataset inside of this repository. Then follow run the following command: 
 
 ```
 chmod +x scripts/initializeL3SF.sh
@@ -63,19 +63,19 @@ Experiment X/
         Pore/
 ```
 
-Thus, PyTorch machine learning model files will be saved in Experiment X/models/ directory. Text files with pore coordinates will be saved in Experiment X/Prediction/Coordinates/ directory. Binary pore maps will be saved in Experiment X/Prediction/Pore/ directory. Fingerprint images that showcase true and false detections will be saved in Experiment X/Prediction/Fingerprint/ directory. 
+Thus, PyTorch machine learning model files will be saved in ```Experiment X/models/ directory```. Text files with pore coordinates will be saved in ```Experiment X/Prediction/Coordinates/``` directory. Binary pore maps will be saved in ```Experiment X/Prediction/Pore/``` directory. Fingerprint images that showcase true and false detections will be saved in ```Experiment X/Prediction/Fingerprint/ directory```. 
 
 To create the correct internal structure, you may use the following commands: 
 
 ```
-chmod +x experimentSetUp.sh 
-./experimetSetUp.sh NameOfTheExperiment
+chmod +x scripts/experimentSetUp.sh 
+./scripts/experimetSetUp.sh NameOfTheExperiment
 ```
 
 
 ## Experiment result replication
 
-If you are using PolyU Dataset, to replicate results of the experiments, run the following commands. 
+If you are using <ins>PolyU</ins> Dataset, to replicate results of the experiments, run the following commands. 
 
 ```
 chmod +x scripts/polyu13patchsize.sh
@@ -92,7 +92,7 @@ chmod +x scripts/polyu19patchsize.sh
 where 31-110 denotes range of files that will be used for training, 111-120 denotes range of numbers that will be used for validation and 121-150 denotes range of numbers that will be used for first testing, and 1-30 for second testing. You may use a different protocol by changing the numbers.
 
 
-If you are using L3-SF, to replicate results of the experiments, run the following commands. 
+If you are using <ins>L3-SF</ins>, to replicate results of the experiments, run the following commands. 
 
 ```
 chmod +x scripts/l3sf13patchsize.sh
@@ -115,10 +115,10 @@ If a user wishes to use a pretrained model, to detect pores on images inside of 
 
 ```
 chmod +x scripts/detect.sh 
-./scripts/detect.sh dataset 1-30
+./scripts/detect.sh 1-30
 ```
 
-where 1-30 denotes for range of files that must be processed. The processed information will be saved in out_of_the_box_detect directory. 
+where 1-30 denotes for range of files that must be processed. The processed information will be saved in ```out_of_the_box_detect``` directory. 
 
 
 ## Research framework 
@@ -216,7 +216,9 @@ python3 train.py --patchSize 17 --poreRadius 3 --groundTruth dataset --trainingR
 
 ```
 
-## Gabriel Dahia (2018) FCN reimplementation model
+## Re-implementations
+
+### Gabriel Dahia (2018) FCN reimplementation model
 
 In this paper, we have reimplemented FCN architecture developed by Gabriel Dahia in ["Improving Fingerprint Pore Detection with a Small FCN"](https://arxiv.org/abs/1811.06846). To run experiments using their architecture, run the following command:
 
@@ -225,7 +227,7 @@ chmod +x scripts/dahia.sh
 ./scripts/dahia.sh
 ```
 
-## Su _et al._'s (2017) CNN reimplementation model
+### Su _et al._'s (2017) CNN reimplementation model
 In this paper, we have reimplemented CNN architecture by Su et. al in ["A deep learning approach towards pore extraction for high-resolution fingerprint recognition"](https://ieeexplore.ieee.org/document/7952518). To run experiments using their architecture, run the following command:
 
 ```
@@ -233,7 +235,7 @@ chmod +x scripts/su.sh
 ./scripts/su.sh
 ```
 
-## Lemes et. al (2014) Dynamic Pore Filtering - Computer Vision
+### Lemes et. al (2014) Dynamic Pore Filtering - Computer Vision
 In this paper, we have re-implemented dynamic pore filtering technique developed in ["Dynamic Pore Filtering for Keypoint Detection Applied to Newborn Authentication"](https://ieeexplore.ieee.org/document/6977010). To run experiments using their algorithm, run the following command: 
 
 ```
