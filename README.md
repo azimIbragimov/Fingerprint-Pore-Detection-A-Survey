@@ -40,7 +40,7 @@ chmod +x scripts/initializePolyU.sh
 ./scripts/initializePolyU.sh pathToDataset
 ```
 
-To install the <ins>L3-SF dataset</ins>, place a folder with the dataset inside of this repository. Then follow run the following command: 
+To install the <ins>L3-SF dataset</ins>, place a folder with the dataset inside of this repository. This dataset is already pre-installed. If you wish to use this dataset, make sure to cite the publication specified at the bottom of this page. Then follow run the following command to initialize this dataset: 
 
 ```
 chmod +x scripts/initializeL3SF.sh
@@ -241,4 +241,30 @@ In this paper, we have re-implemented dynamic pore filtering technique developed
 ```
 chmod +x scripts/dpf.sh
 ./scripts/dpf.sh
+```
+
+#Citations: 
+
+Fingerprint Pore Detection: A Survey (2022)
+```
+@misc{https://doi.org/10.48550/arxiv.2211.14716,
+  doi = {10.48550/ARXIV.2211.14716},
+  url = {https://arxiv.org/abs/2211.14716},
+  author = {Ibragimov, Azim and Segundo, Mauricio Pamplona},
+  title = {Fingerprint Pore Detection: A Survey},
+  year = {2022},
+}
+
+```
+
+L3-SF Dataset
+```
+@misc{wyzykowski2020level,
+    title={Level Three Synthetic Fingerprint Generation},
+    author={André Brasil Vieira Wyzykowski and Mauricio Pamplona Segundo and Rubisley de Paula Lemes},
+    year={2020},
+    eprint={2002.03809},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV}
+}
 ```

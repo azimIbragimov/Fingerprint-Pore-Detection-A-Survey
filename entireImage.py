@@ -36,8 +36,6 @@ def findPores(
 
     if preDefinedPrediction == None:
 
-        device="cuda:1"
-
         # load the model on CPU
         model = loadModel(
             modelPath = model, 
@@ -64,8 +62,6 @@ def findPores(
 
             ans1, ans2 = 0, 0 
     processes = []
-
-
 
 
     for fileIndex in (index):
@@ -99,7 +95,7 @@ def findPores(
                 porePredFolder, 
                 fileIndex, 
                 coordinatePredFolder, 
-                nmsWindow
+                nmsWindow, 
                 ))
 
         p.start()
@@ -119,13 +115,14 @@ def apply_nms(
     fileIndex, 
     coordinatePredFolder, 
     nmsWindow, 
-    drawPredictions = False
+    drawPredictions = False, 
+    device="cpu"
     ):
 
         #apply nms
         workpred = pred.squeeze()
-        boxes = torch.FloatTensor([]).cpu()
-        scores = torch.FloatTensor([]).cpu()
+        boxes = torch.tensor([], device=device)
+        scores = torch.tensor([], device=device)
 
         mask = torch.ones(workpred.shape, dtype=torch.int16)
         sim_vec = torch.nonzero((workpred >= probability)*mask)
@@ -143,9 +140,7 @@ def apply_nms(
         boxes, score = cat, scorescat
 
 
-        indices = torchvision.ops.boxes.nms(boxes.float(), score.float(), nsmThreshold)
-
-    
+        indices = torchvision.ops.boxes.nms(boxes.type(torch.float), score.type(torch.float), nsmThreshold)
 
         pred[0][0] = torch.zeros(pred[0][0].shape)
 

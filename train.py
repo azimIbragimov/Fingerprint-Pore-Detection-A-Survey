@@ -397,6 +397,7 @@ def algorithm():
   print("-----------------------------------------")
   print("Training & Validation")
 
+
   maxResult = 0
   if MACRO.TRAIN_RANGE:
     for i in range(MACRO.EPOC):
@@ -507,7 +508,6 @@ def algorithm():
     
     hs = dict()
     prob = MACRO.TEST_START_PROBABILITY
-
 
     if MACRO.VALIDATION_RANGE:
         print("\n\n-----------------------------------------")

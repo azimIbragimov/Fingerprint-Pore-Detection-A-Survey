@@ -97,13 +97,13 @@ if __name__=="__main__":
 
     # getting labels
     for path, subdirs, files in os.walk(args.datasetDirectory):
-        for name in sorted(files, key=numeric_sort_key):
+        for name in sorted(files):
             if fnmatch(name, patternLabel):
                 labelsList.append(os.path.join(path, name))
 
 
     for path, subdirs, files in os.walk(args.datasetDirectory):
-        for name in sorted(files, key=numeric_sort_key):
+        for name in sorted(files):
             if fnmatch(name, patternImage):
                 imageList.append(os.path.join(path, name))
 
