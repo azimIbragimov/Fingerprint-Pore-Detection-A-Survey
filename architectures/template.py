@@ -11,6 +11,7 @@ class LayerBlock(torch.nn.Module):
                 inChanels, outChanels, 
                 kernel_size=kernelSize, 
                 padding="valid", 
+                bias=False,
                 stride=(1, 1)),
             torch.nn.ReLU(), 
             torch.nn.BatchNorm2d(outChanels)

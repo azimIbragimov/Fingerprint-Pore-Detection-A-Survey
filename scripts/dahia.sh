@@ -35,4 +35,4 @@ chmod +x scripts/experimentSetUp.sh
 # implemen- tation of NMS, it = 0 corresponds to discarding bounding boxes that have any amount of intersection.
 # '
 
-python3 train.py --patchSize 17 --boundingBoxSize 7 --poreRadius 3 --optimizer SGD --learningRate 0.1 --batchSize 256 --groundTruth dataset --trainingRange 1-15 --validationRange 16-20 --testingRange 21-30  --criteriation CROSSENTRAPY --defaultNMS 0 --defaultProb 0.6 --testStartProbability 0.1 --testEndProbability 0.9 --testStepProbability 0.1 --testStartNMSUnion 0.0 --testStepNMSUnion 0.1  --testEndNMSUnion 0.9  --experimentPath experiments/dahia  --gabriel --device cuda >> experiments/dahia/exp.log
+python3 train.py --patchSize 17 --boundingBoxSize 7 --poreRadius 3 --optimizer SGD --learningRate 0.1 --batchSize 256 --groundTruth dataset --trainingRange 1-15 --validationRange 16-20 --testingRange 21-30  --defaultNMS 0 --defaultProb 0.6 --testStartProbability 0.1 --testEndProbability 0.9 --testStepProbability 0.1 --testStartNMSUnion 0.0 --testStepNMSUnion 0.1  --testEndNMSUnion 0.9  --experimentPath experiments/dahia  --gabriel --device cuda --numberWorkers 8 

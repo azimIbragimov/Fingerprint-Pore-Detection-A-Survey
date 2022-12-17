@@ -9,8 +9,13 @@ import argparse, os
 from tqdm import tqdm
 import torch.multiprocessing as mp
 import time
-from tqdm.contrib.concurrent import process_map  # or thread_map
-import copy
+import copy, random
+
+# setting the seed to exlcude non-deterministic behaviour 
+torch.manual_seed(0)
+random.seed(0)
+numpy.random.seed(0)
+torch.cuda.manual_seed(0)
 
 
 parser = argparse.ArgumentParser()
@@ -215,7 +220,7 @@ def algorithm():
   """
   This function finds pores in a fingerprint
   """
-  torch.backends.cudnn.benchmark = True
+  torch.backends.cudnn.benchmark = False
   
   MACRO = util.utils.Macro
   MACRO.CRITERIA = "BCELOSS"

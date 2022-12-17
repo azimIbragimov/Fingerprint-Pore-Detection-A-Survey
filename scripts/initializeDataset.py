@@ -1,4 +1,4 @@
-import os, argparse, shutil
+import os, argparse, shutil, re
 from fnmatch import fnmatch
 from tqdm import tqdm
 
@@ -50,12 +50,11 @@ class Dataset():
 
 
 
+def numeric_sort_key(s):
+    return int(re.match(r'\d+', s).group())
 
 
                 
-
-
-
 
 if __name__=="__main__": 
 
@@ -95,22 +94,22 @@ if __name__=="__main__":
 
     imageList, labelsList = [], []
 
-    
+
+    # getting labels
     for path, subdirs, files in os.walk(args.datasetDirectory):
-        for name in sorted(files):
+        for name in sorted(files, key=numeric_sort_key):
             if fnmatch(name, patternLabel):
                 labelsList.append(os.path.join(path, name))
 
 
     for path, subdirs, files in os.walk(args.datasetDirectory):
-        for name in sorted(files):
+        for name in sorted(files, key=numeric_sort_key):
             if fnmatch(name, patternImage):
                 imageList.append(os.path.join(path, name))
 
     
     dataset = Dataset(args.datasetDirectory, args.transformDirectory, args.substractOne)
-    imageList.sort()
-    labelsList.sort()
+
 
     for i in (range(len(labelsList))): 
         dataset.append(imageList[i], labelsList[i])
