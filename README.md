@@ -243,7 +243,7 @@ chmod +x scripts/dpf.sh
 ./scripts/dpf.sh
 ```
 
-#Citations: 
+# Citations: 
 
 Fingerprint Pore Detection: A Survey (2022)
 ```
